@@ -1,0 +1,21 @@
+{
+  "name": "voidstate",
+  "version": "1.0.0",
+  "description": "VOID STATE - Premium Streetwear E-commerce Site",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 || python -m SimpleHTTPServer 8000",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "keywords": [
+    "streetwear",
+    "ecommerce",
+    "fashion"
+  ],
+  "author": "abdellahosalh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdellahosalh/VOIDSTATE"
+  }
+}
