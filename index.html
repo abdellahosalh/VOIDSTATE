@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Monument+Extended:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Custom Cursor Elements -->
+    <!-- Custom Cursor -->
     <div id="cursor"></div>
     <div id="cursor-blur"></div>
 
@@ -16,7 +16,6 @@
     <nav>
         <div class="logo">
             <a href="#" class="brand-link">
-                <!-- YOUR CUSTOM PNG LOGO (with filter to make it pure white) -->
                 <img src="https://i.ibb.co/gMcswCkK/Chat-GPT-Image-Aug-14-2026-07-40-25-PM.png" 
                      alt="VOID STATE Logo" 
                      class="brand-logo-img">
@@ -25,16 +24,60 @@
         <div class="nav-links">
             <a href="#collection" class="hover-target">COLLECTION 01</a>
             <a href="#lookbook" class="hover-target">LOOKBOOK</a>
-            <a href="#about" class="hover-target">ABOUT</a>
+            <a href="#story" class="hover-target">OUR STORY</a>
         </div>
-        <div class="cart hover-target">
+        <div class="cart hover-target" id="cart-toggle">
             <span id="cart-count">CART (0)</span>
         </div>
     </nav>
 
+    <!-- ===== CART SIDEBAR ===== -->
+    <div id="cart-overlay"></div>
+    <div id="cart-sidebar">
+        <div class="cart-header">
+            <h2>YOUR CART</h2>
+            <button id="cart-close">✕</button>
+        </div>
+        <div id="cart-items-list">
+            <p class="empty-cart-msg">Your void is empty.<br>Add something bold.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>TOTAL</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="checkout-btn">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- ===== AI CHAT WIDGET ===== -->
+    <div id="ai-chat-btn" class="hover-target">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+        </svg>
+        <span>AI STYLE CONCIERGE</span>
+    </div>
+
+    <div id="ai-chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <span class="chat-dot"></span>
+                <span>VOID AI · Online</span>
+            </div>
+            <button id="chat-close">✕</button>
+        </div>
+        <div id="chat-messages">
+            <div class="chat-msg bot">
+                <p>🖤 Welcome to <strong>VOID STATE</strong>.<br>I'm your AI Style Concierge. Let's find your perfect piece.</p>
+            </div>
+        </div>
+        <div id="chat-options"></div>
+    </div>
+
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="glitch" data-text="VOID STATE">VOID STATE</h1>
@@ -43,14 +86,14 @@
             </div>
         </section>
 
-        <!-- Shop / Products Section -->
+        <!-- Shop -->
         <section id="shop" class="products">
             <h2 class="section-title">LATEST DROPS</h2>
             <div class="product-grid">
                 <!-- Product 1 -->
-                <div class="product-card hover-target" data-product="Oversized Tee" data-price="45.00">
+                <div class="product-card hover-target" data-product="Oversized Tee" data-price="45.00" data-id="tee">
                     <div class="image-wrapper">
-                        <img src="https://picsum.photos/seed/voidtee/600/750" alt="VOID STATE Oversized Tee">
+                        <img src="https://picsum.photos/seed/voidtee/600/750" alt="Oversized Tee">
                         <div class="overlay add-to-cart">
                             <span>ADD TO CART</span>
                         </div>
@@ -61,9 +104,9 @@
                     </div>
                 </div>
                 <!-- Product 2 -->
-                <div class="product-card hover-target" data-product="Heavyweight Hoodie" data-price="85.00">
+                <div class="product-card hover-target" data-product="Heavyweight Hoodie" data-price="85.00" data-id="hoodie">
                     <div class="image-wrapper">
-                        <img src="https://picsum.photos/seed/voidhoodie/600/750" alt="VOID STATE Heavyweight Hoodie">
+                        <img src="https://picsum.photos/seed/voidhoodie/600/750" alt="Heavyweight Hoodie">
                         <div class="overlay add-to-cart">
                             <span>ADD TO CART</span>
                         </div>
@@ -76,20 +119,47 @@
             </div>
         </section>
 
-        <!-- Dummy Sections for Navigation -->
+        <!-- Collection 01 -->
         <section id="collection" class="dummy-section">
             <h2>COLLECTION 01</h2>
-            <p>Explore our first limited drop – coming soon.</p>
+            <p>Our inaugural drop. Limited pieces, infinite presence. Dropping soon.</p>
         </section>
 
+        <!-- Lookbook -->
         <section id="lookbook" class="dummy-section">
             <h2>LOOKBOOK</h2>
-            <p>Visual stories from the void – check back for editorial content.</p>
+            <p>Visual stories from the void – editorial content dropping this season.</p>
         </section>
 
-        <section id="about" class="dummy-section">
-            <h2>ABOUT VOID STATE</h2>
-            <p>Premium streetwear born from the emptiness. We craft pieces that speak through silence.</p>
+        <!-- Our Story (upgraded) -->
+        <section id="story" class="story-section">
+            <div class="story-container">
+                <div class="story-image">
+                    <div class="story-image-placeholder">
+                        <span>EST. 2026</span>
+                    </div>
+                </div>
+                <div class="story-text">
+                    <h2>OUR STORY</h2>
+                    <div class="story-divider"></div>
+                    <p class="story-intro">
+                        <strong>VOID STATE</strong> was born from a single belief: <br>
+                        <em>"True luxury is found in the empty spaces."</em>
+                    </p>
+                    <p>
+                        In a world screaming for attention, we chose silence. 
+                        We craft premium streetwear for those who understand that 
+                        what you <strong>don't</strong> wear is just as powerful as what you do.
+                    </p>
+                    <p>
+                        Every stitch, every fabric, every silhouette is designed 
+                        to embrace the emptiness — turning absence into an aura.
+                    </p>
+                    <p class="story-signoff">
+                        — Void State, 2026
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
