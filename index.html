@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,23 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Monument+Extended:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Custom Cursor Elements -->
     <div id="cursor"></div>
     <div id="cursor-blur"></div>
 
+    <!-- Navigation -->
     <nav>
         <div class="logo">
-            <!-- CUSTOM SVG LOGO (from imagination) -->
-            <a href="#" class="brand-logo" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
-                <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="45" stroke="white" stroke-width="2" opacity="0.3"/>
-                    <path d="M20 75 L48 20 L50 20 L52 20 L80 75" stroke="white" stroke-width="4" stroke-linecap="square"/>
-                    <rect x="55" y="40" width="4" height="4" fill="white" opacity="0.8" transform="rotate(45 57 42)"/>
-                    <line x1="30" y1="60" x2="70" y2="60" stroke="white" stroke-width="1" opacity="0.4" stroke-dasharray="4 6"/>
-                </svg>
-                <div style="display:flex; flex-direction:column; line-height:1.1;">
-                    <span style="font-size:22px; font-weight:900; letter-spacing:6px; color:white; font-family:'Helvetica Neue', sans-serif;">VOID</span>
-                    <span style="font-size:11px; letter-spacing:8px; color:#888; font-family:'Helvetica Neue', sans-serif;">STATE</span>
-                </div>
+            <a href="#" class="brand-link">
+                <!-- YOUR CUSTOM PNG LOGO (with filter to make it pure white) -->
+                <img src="https://i.ibb.co/gMcswCkK/Chat-GPT-Image-Aug-14-2026-07-40-25-PM.png" 
+                     alt="VOID STATE Logo" 
+                     class="brand-logo-img">
             </a>
         </div>
         <div class="nav-links">
@@ -37,7 +32,9 @@
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="glitch" data-text="VOID STATE">VOID STATE</h1>
@@ -46,13 +43,14 @@
             </div>
         </section>
 
-        <!-- SHOP SECTION -->
+        <!-- Shop / Products Section -->
         <section id="shop" class="products">
             <h2 class="section-title">LATEST DROPS</h2>
             <div class="product-grid">
+                <!-- Product 1 -->
                 <div class="product-card hover-target" data-product="Oversized Tee" data-price="45.00">
                     <div class="image-wrapper">
-                        <img src="https://picsum.photos/seed/voidtee/400/500" alt="VOID STATE Oversized Tee">
+                        <img src="https://picsum.photos/seed/voidtee/600/750" alt="VOID STATE Oversized Tee">
                         <div class="overlay add-to-cart">
                             <span>ADD TO CART</span>
                         </div>
@@ -62,9 +60,10 @@
                         <p>$45.00</p>
                     </div>
                 </div>
+                <!-- Product 2 -->
                 <div class="product-card hover-target" data-product="Heavyweight Hoodie" data-price="85.00">
                     <div class="image-wrapper">
-                        <img src="https://picsum.photos/seed/voidhoodie/400/500" alt="VOID STATE Heavyweight Hoodie">
+                        <img src="https://picsum.photos/seed/voidhoodie/600/750" alt="VOID STATE Heavyweight Hoodie">
                         <div class="overlay add-to-cart">
                             <span>ADD TO CART</span>
                         </div>
@@ -77,25 +76,24 @@
             </div>
         </section>
 
-        <!-- COLLECTION 01 (dummy) -->
+        <!-- Dummy Sections for Navigation -->
         <section id="collection" class="dummy-section">
             <h2>COLLECTION 01</h2>
             <p>Explore our first limited drop – coming soon.</p>
         </section>
 
-        <!-- LOOKBOOK (dummy) -->
         <section id="lookbook" class="dummy-section">
             <h2>LOOKBOOK</h2>
             <p>Visual stories from the void – check back for editorial content.</p>
         </section>
 
-        <!-- ABOUT (dummy) -->
         <section id="about" class="dummy-section">
             <h2>ABOUT VOID STATE</h2>
             <p>Premium streetwear born from the emptiness. We craft pieces that speak through silence.</p>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">VOID STATE</div>
