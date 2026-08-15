@@ -1,58 +1,7 @@
-const products = [
-  { id:'venom-signal', name:'Venom Signal Tee', price:32, image:'images/venom-signal.png', description:'A dark streetwear essential built around a striking cobra graphic. Venom Signal blends shadow, movement, and quiet danger into one bold front print.' },
-  { id:'drift-beyond', name:'Drift Beyond Tee', price:32, image:'images/drift-beyond.png', description:'A lone astronaut floating through the unknown—clean, cold, and limitless. A statement piece for late nights, big ideas, and your own path.' },
-  { id:'thorned-remains', name:'Thorned Remains Tee', price:32, image:'images/thorned-remains.png', description:'Beauty and chaos locked together. A skeletal hand and deep red rose meet in a graphic made for darker days.' },
-  { id:'fear-no-feeling', name:'Fear No Feeling Tee', price:32, image:'images/fear-no-feeling.png', description:'Raw black-and-white artwork with an uncompromising message. Minimal, intense, and made for the VOID STATE mindset.' },
-  { id:'silent-strike', name:'Silent Strike Tee', price:32, image:'images/silent-strike.png', description:'A detailed serpent graphic on a clean dark canvas. It is about patience, precision, and power held back until the right moment.' }
-];
-
-let cart = JSON.parse(localStorage.getItem('void-state-cart') || '[]');
-let selectedSize = 'M';
-const currency = new Intl.NumberFormat('en-US', { style:'currency', currency:'USD' });
-const grid = document.querySelector('#product-grid');
-const drawer = document.querySelector('#cart-drawer');
-const backdrop = document.querySelector('#backdrop');
-const cartButton = document.querySelector('.cart-button');
-const dialog = document.querySelector('#product-dialog');
-const dialogContent = document.querySelector('#dialog-content');
-const toast = document.querySelector('#toast');
-
-function productCard(product) {
-  return `<article class="product-card"><button class="product-image-button" type="button" data-view="${product.id}" aria-label="View ${product.name}"><img src="${product.image}" alt="${product.name} graphic" loading="lazy"></button><div class="product-meta"><div><h3>${product.name}</h3><p>Graphic T-shirt</p></div><p class="price">${currency.format(product.price)}</p><button class="quick-add" data-add="${product.id}" type="button">Quick add</button></div></article>`;
-}
-
-function renderProducts() { grid.innerHTML = products.map(productCard).join(''); }
-function saveCart() { localStorage.setItem('void-state-cart', JSON.stringify(cart)); }
-function openCart() { drawer.classList.add('is-open'); backdrop.classList.add('is-visible'); drawer.setAttribute('aria-hidden','false'); cartButton.setAttribute('aria-expanded','true'); }
-function closeCart() { drawer.classList.remove('is-open'); backdrop.classList.remove('is-visible'); drawer.setAttribute('aria-hidden','true'); cartButton.setAttribute('aria-expanded','false'); }
-function notify(message) { toast.textContent = message; toast.classList.add('is-visible'); window.setTimeout(() => toast.classList.remove('is-visible'), 2600); }
-function addToCart(id, size = 'M') { const item = cart.find(entry => entry.id === id && entry.size === size); if (item) item.quantity += 1; else cart.push({id, size, quantity:1}); saveCart(); renderCart(); notify('Added to your bag.'); }
-function renderCart() {
-  const items = document.querySelector('#cart-items');
-  const count = cart.reduce((sum,item) => sum + item.quantity, 0);
-  document.querySelector('#cart-count').textContent = count;
-  if (!cart.length) { items.innerHTML = '<p class="empty-state">Your bag is empty.<br>Find your signal.</p>'; document.querySelector('#cart-total').textContent = currency.format(0); return; }
-  let total = 0;
-  items.innerHTML = cart.map(item => { const product = products.find(product => product.id === item.id); total += product.price * item.quantity; return `<div class="cart-item"><img src="${product.image}" alt=""><div><h3>${product.name}</h3><p>Size ${item.size} · Qty ${item.quantity}</p><button class="remove-button" data-remove="${item.id}" data-size="${item.size}" type="button">Remove</button></div><strong>${currency.format(product.price * item.quantity)}</strong></div>`; }).join('');
-  document.querySelector('#cart-total').textContent = currency.format(total);
-}
-function viewProduct(id) {
-  const product = products.find(product => product.id === id); selectedSize = 'M';
-  dialogContent.innerHTML = `<div class="dialog-layout"><img src="${product.image}" alt="${product.name} graphic"><div class="dialog-details"><p class="eyebrow">DROP 001</p><h2 id="dialog-title">${product.name}</h2><p class="price">${currency.format(product.price)}</p><p>${product.description}</p><span class="size-label">SELECT SIZE</span><div class="size-options">${['S','M','L','XL','2XL'].map(size => `<button class="size-option ${size === 'M' ? 'is-selected' : ''}" type="button" data-size="${size}">${size}</button>`).join('')}</div><button class="button button-accent" type="button" data-dialog-add="${product.id}">Add to bag</button></div></div>`;
-  dialog.showModal();
-}
-
-renderProducts(); renderCart(); document.querySelector('#year').textContent = new Date().getFullYear();
-document.addEventListener('click', event => {
-  const view = event.target.closest('[data-view]'); const add = event.target.closest('[data-add]'); const remove = event.target.closest('[data-remove]'); const size = event.target.closest('[data-size]'); const dialogAdd = event.target.closest('[data-dialog-add]');
-  if (view) viewProduct(view.dataset.view);
-  if (add) { addToCart(add.dataset.add); openCart(); }
-  if (remove) { cart = cart.filter(item => !(item.id === remove.dataset.remove && item.size === remove.dataset.size)); saveCart(); renderCart(); }
-  if (size) { selectedSize = size.dataset.size; document.querySelectorAll('.size-option').forEach(button => button.classList.toggle('is-selected', button.dataset.size === selectedSize)); }
-  if (dialogAdd) { addToCart(dialogAdd.dataset.dialogAdd, selectedSize); dialog.close(); openCart(); }
-});
-cartButton.addEventListener('click', openCart); document.querySelector('#close-cart').addEventListener('click', closeCart); backdrop.addEventListener('click', closeCart); document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-document.querySelector('#checkout-button').addEventListener('click', () => notify('Connect your Printify or payment checkout before accepting orders.'));
-const menu = document.querySelector('.main-nav'); const menuToggle = document.querySelector('.menu-toggle');
-menuToggle.addEventListener('click', () => { const open = menu.classList.toggle('is-open'); menuToggle.setAttribute('aria-expanded', open); });
-menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.classList.remove('is-open'); menuToggle.setAttribute('aria-expanded','false'); }));
+const products=[{id:'venom-signal',name:'Venom Signal Tee',price:32,image:'assets/venom-signal.png',description:'A striking cobra graphic for people who move with patience, intention, and quiet force.'},{id:'drift-beyond',name:'Drift Beyond Tee',price:32,image:'assets/drift-beyond.png',description:'A lone astronaut moving through the unknown. Made for late nights, big ideas, and your own direction.'},{id:'thorned-remains',name:'Thorned Remains Tee',price:32,image:'assets/thorned-remains.png',description:'Beauty and chaos locked together. A skeletal hand and deep red rose in one unforgettable graphic.'},{id:'fear-no-feeling',name:'Fear No Feeling Tee',price:32,image:'assets/fear-no-feeling.png',description:'Raw black-and-white artwork with an uncompromising message. Minimal, intense, and rooted.'},{id:'silent-strike',name:'Silent Strike Tee',price:32,image:'assets/silent-strike.png',description:'A serpent graphic about precision, power, and knowing exactly when to move.'}];
+let bag=JSON.parse(localStorage.getItem('azru-bag')||'[]'),selectedSize='M';const money=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}),bagDrawer=document.querySelector('#bag'),backdrop=document.querySelector('#drawer-backdrop'),dialog=document.querySelector('#product-dialog'),toast=document.querySelector('#toast');
+function renderProducts(){document.querySelector('#product-grid').innerHTML=products.map(p=>`<article class="product-card"><button type="button" class="product-image" data-view="${p.id}" aria-label="View ${p.name}"><img src="${p.image}" alt="${p.name} graphic" loading="lazy"></button><div class="product-meta"><div><h3>${p.name}</h3><p>AZRU / Graphic tee</p></div><p class="price">${money.format(p.price)}</p><button class="quick-add" type="button" data-add="${p.id}">Add</button></div></article>`).join('')}
+function saveBag(){localStorage.setItem('azru-bag',JSON.stringify(bag))}function showToast(m){toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}function openBag(){bagDrawer.classList.add('is-open');backdrop.classList.add('is-visible');bagDrawer.setAttribute('aria-hidden','false');document.querySelector('.bag-button').setAttribute('aria-expanded','true')}function closeBag(){bagDrawer.classList.remove('is-open');backdrop.classList.remove('is-visible');bagDrawer.setAttribute('aria-hidden','true');document.querySelector('.bag-button').setAttribute('aria-expanded','false')}function addToBag(id,size='M'){const e=bag.find(i=>i.id===id&&i.size===size);e?e.quantity+=1:bag.push({id,size,quantity:1});saveBag();renderBag();showToast('Added to your bag.')}
+function renderBag(){const count=bag.reduce((t,i)=>t+i.quantity,0);document.querySelector('#bag-count').textContent=count;const target=document.querySelector('#bag-items');let total=0;if(!bag.length){target.innerHTML='<p class="empty-message">Your bag is empty.<br>Find your mark.</p>';document.querySelector('#subtotal').textContent=money.format(0);return}target.innerHTML=bag.map(i=>{const p=products.find(x=>x.id===i.id);total+=p.price*i.quantity;return `<div class="bag-item"><img src="${p.image}" alt=""><div><h3>${p.name}</h3><p>Size ${i.size} · Qty ${i.quantity}</p><button class="remove" data-remove="${i.id}" data-size="${i.size}" type="button">Remove</button></div><strong>${money.format(p.price*i.quantity)}</strong></div>`}).join('');document.querySelector('#subtotal').textContent=money.format(total)}
+function showProduct(id){const p=products.find(x=>x.id===id);selectedSize='M';document.querySelector('#dialog-content').innerHTML=`<div class="dialog-grid"><img src="${p.image}" alt="${p.name} graphic"><div class="dialog-details"><p class="eyebrow">AZRU / FRAGMENTS 001</p><h2>${p.name}</h2><p class="price">${money.format(p.price)}</p><p>${p.description}</p><label class="size-label">SELECT SIZE</label><div class="sizes">${['S','M','L','XL','2XL'].map(s=>`<button class="size ${s==='M'?'selected':''}" type="button" data-size="${s}">${s}</button>`).join('')}</div><button class="button button-earth" type="button" data-dialog-add="${p.id}">Add to bag</button></div></div>`;dialog.showModal()}
+renderProducts();renderBag();document.querySelector('#year').textContent=new Date().getFullYear();document.addEventListener('click',e=>{const view=e.target.closest('[data-view]'),add=e.target.closest('[data-add]'),remove=e.target.closest('[data-remove]'),size=e.target.closest('[data-size]'),dialogAdd=e.target.closest('[data-dialog-add]');if(view)showProduct(view.dataset.view);if(add){addToBag(add.dataset.add);openBag()}if(remove){bag=bag.filter(i=>!(i.id===remove.dataset.remove&&i.size===remove.dataset.size));saveBag();renderBag()}if(size){selectedSize=size.dataset.size;document.querySelectorAll('.size').forEach(b=>b.classList.toggle('selected',b.dataset.size===selectedSize))}if(dialogAdd){addToBag(dialogAdd.dataset.dialogAdd,selectedSize);dialog.close();openBag()}});document.querySelector('.bag-button').addEventListener('click',openBag);document.querySelector('.close-button').addEventListener('click',closeBag);backdrop.addEventListener('click',closeBag);document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());document.querySelector('#checkout').addEventListener('click',()=>showToast('Add your Printify product links before taking orders.'));const menuButton=document.querySelector('.menu-button'),nav=document.querySelector('.main-nav');menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',open)});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));
