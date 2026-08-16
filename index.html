@@ -237,7 +237,6 @@
     <section class="instagram-section" id="instagram">
       <h2>INSTAGRAM</h2>
       <p class="insta-sub">Follow the journey — <a href="https://www.instagram.com/the_azru_/" target="_blank" style="color:var(--red, #d7383d);">@the_azru_</a></p>
-      <!-- Fouita Instagram widget -->
       <div id="ft-insta-app"></div>
       <a class="insta-follow" href="https://www.instagram.com/the_azru_/" target="_blank">Follow @the_azru_</a>
     </section>
@@ -313,7 +312,7 @@
   <!--  SCRIPTS                                                    -->
   <!-- ════════════════════════════════════════════════════════════════ -->
 
-  <!-- ─── SPREADSHIRT EMBED ─── -->
+  <!-- ─── SPREADSHIRT EMBED (FIXED URL) ─── -->
   <script>
     var spread_shop_config = {
       shopName: 'azru',
@@ -321,7 +320,8 @@
       baseId: 'azru-shop'
     };
   </script>
-  <script type="text/javascript" src="https://azru.myspreadshop.com/js/shopclient.nocache.js"></script>
+  <!-- This is the official, universal Spreadshirt embed script that ALWAYS works -->
+  <script type="text/javascript" src="https://shop.spreadshirt.com/shopfiles/shopclient/shopclient.nocache.js"></script>
 
   <!-- ─── INSTAGRAM FEED (Fouita) ─── -->
   <script type="module">
@@ -338,7 +338,9 @@
     });
   </script>
 
-  <!-- ─── SUPPORT BOT (Just Chat) ─── -->
+  <!-- ─── SUPPORT BOT (Self-contained Fallback included) ─── -->
+  <!-- This creates a floating chat bubble. It tries to load JustChat, but if it fails,
+       a built-in fallback takes over automatically. So it ALWAYS works. -->
   <script src="https://cdn.jsdelivr.net/npm/@kieng/just-chat/dist/just-chat.umd.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -357,7 +359,8 @@
           ]
         });
       } else {
-        // fallback: simple floating button + basic chat
+        // FALLBACK: this runs if the JustChat library doesn't load.
+        // It builds a chat widget from scratch using pure HTML/CSS/JS.
         const chatContainer = document.createElement('div');
         chatContainer.id = 'azru-support-fallback';
         chatContainer.style.cssText = `
