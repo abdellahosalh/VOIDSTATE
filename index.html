@@ -10,31 +10,434 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Shop Section ── */
+    .shop-section {
+      padding: 80px 5vw;
+      border-top: 1px solid var(--line, #cfe0db);
+      background: var(--cream, #fff8e8);
+    }
+    .shop-section h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(37px, 6vw, 78px);
+      line-height: 0.87;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .shop-section .shop-sub {
+      color: var(--muted, #557079);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line, #cfe0db);
+      padding-bottom: 20px;
+    }
+    #azru-shop {
+      min-height: 400px;
+      background: var(--cream, #fff8e8);
+      color: var(--ink, #17323b);
+      font-family: "DM Mono", monospace;
+    }
+    #azru-shop iframe {
+      width: 100% !important;
+      border: none !important;
+      background: var(--cream, #fff8e8) !important;
+    }
+
+    /* ── Instagram Feed ── */
+    .instagram-section {
+      padding: 80px 5vw;
+      border-top: 1px solid var(--line, #cfe0db);
+      background: var(--cream, #fff8e8);
+      text-align: center;
+    }
+    .instagram-section h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(37px, 6vw, 78px);
+      line-height: 0.87;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .instagram-section .insta-sub {
+      color: var(--muted, #557079);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line, #cfe0db);
+      padding-bottom: 20px;
+    }
+    .instagram-section .insta-follow {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
+      background: var(--red, #d7383d);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .instagram-section .insta-follow:hover {
+      background: #b02b2f;
+    }
+    #ft-insta-app {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── Berber Photos Section ── */
+    .berber-section {
+      padding: 80px 5vw;
+      border-top: 1px solid var(--line, #cfe0db);
+      background: #f5efe6;
+    }
+    .berber-section h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(37px, 6vw, 78px);
+      line-height: 0.87;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .berber-section .berber-sub {
+      color: var(--muted, #557079);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--line, #cfe0db);
+      padding-bottom: 20px;
+    }
+    .berber-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .berber-grid figure {
+      margin: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease;
+      background: #fff;
+    }
+    .berber-grid figure:hover {
+      transform: scale(1.02);
+    }
+    .berber-grid figure img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .berber-grid figure figcaption {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--ink, #17323b);
+      background: #fff;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      .shop-section { padding: 60px 20px; }
+      .instagram-section { padding: 60px 20px; }
+      .berber-section { padding: 60px 20px; }
+      .berber-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .berber-grid figure img {
+        height: 160px;
+      }
+    }
+    @media (max-width: 480px) {
+      .berber-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#collection">Skip to collection</a>
+
+  <!-- ─── HEADER ─── -->
   <header class="site-header">
     <a class="brand" href="#top" aria-label="AZRU home"><span class="brand-mark" aria-hidden="true">▲</span>AZRU</a>
     <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">MENU</button>
-    <nav class="main-nav" aria-label="Main navigation"><a href="#collection">Collection</a><a href="#meaning">Meaning</a><a href="#shipping">Shipping</a></nav>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#collection">Collection</a>
+      <a href="#meaning">Meaning</a>
+      <a href="#shipping">Shipping</a>
+      <a href="#shop-section">Shop</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#berber">Berber</a>
+    </nav>
     <button class="bag-button" type="button" aria-controls="bag" aria-expanded="false">Bag <span id="bag-count">0</span></button>
   </header>
+
   <main id="top">
+
+    <!-- ─── HERO ─── -->
     <section class="hero">
       <p class="eyebrow">AZRU / DROP 001</p>
       <h1>BUILT FROM<br><span>HARD GROUND.</span></h1>
       <p class="hero-copy">AZRU means “little rock.” A small thing that stays. Dark graphic streetwear for people with roots and their own direction.</p>
-      <a class="button button-light" href="#collection">Explore the drop</a>
+      <a class="button button-light" href="#shop-section">Explore the drop</a>
       <p class="hero-footnote">ROOTED. UNMOVED.</p>
-      <div class="stone-shape stone-one" aria-hidden="true"></div><div class="stone-shape stone-two" aria-hidden="true"></div>
+      <div class="stone-shape stone-one" aria-hidden="true"></div>
+      <div class="stone-shape stone-two" aria-hidden="true"></div>
     </section>
+
+    <!-- ─── COLLECTION ─── -->
     <section class="collection section" id="collection">
-      <div class="section-header"><div><p class="eyebrow">FRAGMENTS 001</p><h2>Made to leave<br>a mark.</h2></div><p>Five first signals. Designed for black tees, worn your way.</p></div>
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">FRAGMENTS 001</p>
+          <h2>Made to leave<br>a mark.</h2>
+        </div>
+        <p>Five first signals. Designed for black tees, worn your way.</p>
+      </div>
       <div class="product-grid" id="product-grid"></div>
     </section>
+
+    <!-- ─── MEANING ─── -->
     <section class="meaning section" id="meaning">
       <p class="eyebrow">WHY AZRU</p>
-      <div class="meaning-layout"><div class="meaning-word">AZRU</div><div><h2>Small rock.<br>Lasting weight.</h2><p>AZRU takes its name from the Amazigh word for “little rock.” It is about staying grounded while carving out your own place. This is not trend-chasing streetwear. It is a mark you carry.</p></div></div>
+      <div class="meaning-layout">
+        <div class="meaning-word">AZRU</div>
+        <div>
+          <h2>Small rock.<br>Lasting weight.</h2>
+          <p>AZRU takes its name from the Amazigh word for “little rock.” It is about staying grounded while carving out your own place. This is not trend-chasing streetwear. It is a mark you carry.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SHIPPING ─── -->
+    <section class="shipping section" id="shipping">
+      <p class="eyebrow">THE DETAILS</p>
+      <h2>Created when<br>you order.</h2>
+      <div class="detail-grid">
+        <article><span>01</span><h3>Print on demand</h3><p>Each shirt is printed after you order it. No unwanted stock, no wasted drop.</p></article>
+        <article><span>02</span><h3>Worldwide delivery</h3><p>Production and delivery times depend on your location. Final shipping details show at checkout.</p></article>
+        <article><span>03</span><h3>Wear it often</h3><p>Check the size guide before checkout. Each piece is made especially for you.</p></article>
+      </div>
+    </section>
+
+    <!-- ─── SHOP (Spreadshirt embed) ─── -->
+    <section class="shop-section" id="shop-section">
+      <h2>SHOP</h2>
+      <p class="shop-sub">ROOTED. UNMOVED. — DROP 001</p>
+      <div id="azru-shop">Loading the AZRU shop...</div>
+    </section>
+
+    <!-- ─── INSTAGRAM FEED ─── -->
+    <section class="instagram-section" id="instagram">
+      <h2>INSTAGRAM</h2>
+      <p class="insta-sub">Follow the journey — <a href="https://www.instagram.com/the_azru_/" target="_blank" style="color:var(--red, #d7383d);">@the_azru_</a></p>
+      <!-- Fouita Instagram widget -->
+      <div id="ft-insta-app"></div>
+      <a class="insta-follow" href="https://www.instagram.com/the_azru_/" target="_blank">Follow @the_azru_</a>
+    </section>
+
+    <!-- ─── BERBER PHOTOS ─── -->
+    <section class="berber-section" id="berber">
+      <h2>BERBER</h2>
+      <p class="berber-sub">Rooted in the land. Inspired by Amazigh heritage.</p>
+      <div class="berber-grid">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&h=400&fit=crop" alt="Atlas Mountains landscape" loading="lazy">
+          <figcaption>High Atlas, Morocco</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1527838832700-5054e33b32e8?w=600&h=400&fit=crop" alt="Traditional Berber architecture" loading="lazy">
+          <figcaption>Traditional Berber village</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1587234345707-16c2a5fa71b2?w=600&h=400&fit=crop" alt="Amazigh pattern detail" loading="lazy">
+          <figcaption>Amazigh textile patterns</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&h=400&fit=crop" alt="Desert landscape" loading="lazy">
+          <figcaption>Desert — the endless ground</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1595581603502-ffb5f3d4d9c7?w=600&h=400&fit=crop" alt="Berber rug patterns" loading="lazy">
+          <figcaption>Berber rug — symbols of protection</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1566396630947-4fcc6d3ae59f?w=600&h=400&fit=crop" alt="Rocky terrain" loading="lazy">
+          <figcaption>Hard ground. Unmoved.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">▲</span>AZRU</a>
+    <p>© <span id="year"></span> AZRU. ROOTED. UNMOVED.</p>
+    <a href="mailto:khasnidb@gmail.com">khasnidb@gmail.com</a>
+  </footer>
+
+  <!-- ─── BAG DRAWER ─── -->
+  <aside id="bag" class="bag-drawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Your bag</h2>
+      <button class="close-button" type="button" aria-label="Close bag">×</button>
+    </div>
+    <div class="bag-items" id="bag-items">
+      <p class="empty-message">Your bag is empty.<br>Find your mark.</p>
+    </div>
+    <div class="drawer-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+      <button class="button button-earth" id="checkout" type="button">Checkout</button>
+      <small>Shipping and taxes are calculated at checkout.</small>
+    </div>
+  </aside>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- ─── PRODUCT DIALOG ─── -->
+  <dialog id="product-dialog" class="product-dialog">
+    <button class="close-button dialog-close" type="button" aria-label="Close product details">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!--  SCRIPTS                                                    -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+
+  <!-- ─── SPREADSHIRT EMBED ─── -->
+  <script>
+    var spread_shop_config = {
+      shopName: 'azru',
+      prefix: 'https://azru.myspreadshop.com',
+      baseId: 'azru-shop'
+    };
+  </script>
+  <script type="text/javascript" src="https://azru.myspreadshop.com/js/shopclient.nocache.js"></script>
+
+  <!-- ─── INSTAGRAM FEED (Fouita) ─── -->
+  <script type="module">
+    import App from "https://cdn.fouita.com/public/instagram-feed.js";
+    App.createApp({
+      el: "#ft-insta-app",
+      username: "the_azru_",
+      limit: 6,
+      cols: 3,
+      theme: "light",
+      spacing: 12,
+      rounded: 8,
+      showCaption: false
+    });
+  </script>
+
+  <!-- ─── SUPPORT BOT (Just Chat) ─── -->
+  <script src="https://cdn.jsdelivr.net/npm/@kieng/just-chat/dist/just-chat.umd.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.JustChat) {
+        window.JustChat.init({
+          position: 'bottom-right',
+          title: 'AZRU Support',
+          subtitle: 'Ask us anything — rooted, unmoved.',
+          theme: {
+            primary: '#d7383d',
+            background: '#fff8e8',
+            text: '#17323b'
+          },
+          messages: [
+            { from: 'bot', text: 'Welcome to AZRU. How can we help you today?' }
+          ]
+        });
+      } else {
+        // fallback: simple floating button + basic chat
+        const chatContainer = document.createElement('div');
+        chatContainer.id = 'azru-support-fallback';
+        chatContainer.style.cssText = `
+          position: fixed; bottom: 24px; right: 24px; z-index: 999;
+          font-family: "DM Mono", monospace;
+        `;
+        chatContainer.innerHTML = `
+          <button id="support-toggle" style="
+            background: #d7383d; color: #fff; border: none;
+            padding: 14px 20px; border-radius: 50px;
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(215,56,61,0.4);
+            transition: transform 0.2s;
+          ">💬 Support</button>
+          <div id="support-window" style="
+            display: none; position: absolute; bottom: 70px; right: 0;
+            width: 320px; max-height: 400px;
+            background: #fff8e8; border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+            overflow: hidden; border: 1px solid #cfe0db;
+          ">
+            <div style="padding: 16px 20px; background: #d7383d; color: #fff; font-weight: 600;">
+              AZRU Support
+            </div>
+            <div id="support-messages" style="padding: 16px 20px; height: 200px; overflow-y: auto; font-size: 14px; color: #17323b;">
+              <p style="margin:0 0 12px; background:#f0ebe0; padding:10px 14px; border-radius:8px; display:inline-block;">
+                👋 Welcome to AZRU. How can we help?
+              </p>
+            </div>
+            <div style="padding: 12px 16px; border-top: 1px solid #cfe0db; display:flex; gap:8px;">
+              <input id="support-input" type="text" placeholder="Type a message..." style="flex:1; padding:8px 12px; border:1px solid #cfe0db; border-radius:6px; font-size:13px; background:#fff; color:#17323b;">
+              <button id="support-send" style="background:#d7383d; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600;">Send</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(chatContainer);
+
+        const toggle = document.getElementById('support-toggle');
+        const windowEl = document.getElementById('support-window');
+        const input = document.getElementById('support-input');
+        const send = document.getElementById('support-send');
+        const messages = document.getElementById('support-messages');
+
+        toggle.addEventListener('click', () => {
+          windowEl.style.display = windowEl.style.display === 'none' ? 'block' : 'none';
+        });
+
+        function sendMessage() {
+          const text = input.value.trim();
+          if (!text) return;
+          const userMsg = document.createElement('p');
+          userMsg.style.cssText = 'margin:0 0 8px; text-align:right; color:#d7383d; font-weight:500;';
+          userMsg.textContent = '🗣️ ' + text;
+          messages.appendChild(userMsg);
+          input.value = '';
+          messages.scrollTop = messages.scrollHeight;
+
+          setTimeout(() => {
+            const botMsg = document.createElement('p');
+            botMsg.style.cssText = 'margin:0 0 12px; background:#f0ebe0; padding:10px 14px; border-radius:8px; display:inline-block;';
+            botMsg.textContent = '🤖 Thanks for reaching out! We\'ll get back to you soon.';
+            messages.appendChild(botMsg);
+            messages.scrollTop = messages.scrollHeight;
+          }, 600);
+        }
+
+        send.addEventListener('click', sendMessage);
+        input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+      }
+    });
+  </script>
+
+  <!-- ─── YOUR EXISTING SCRIPT ─── -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>      <div class="meaning-layout"><div class="meaning-word">AZRU</div><div><h2>Small rock.<br>Lasting weight.</h2><p>AZRU takes its name from the Amazigh word for “little rock.” It is about staying grounded while carving out your own place. This is not trend-chasing streetwear. It is a mark you carry.</p></div></div>
     </section>
     <section class="shipping section" id="shipping">
       <p class="eyebrow">THE DETAILS</p><h2>Created when<br>you order.</h2>
